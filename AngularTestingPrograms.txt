@@ -1,0 +1,289 @@
+app.module.ts
+
+import { NgModule } from '@angular/core';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { BrowserModule } from '@angular/platform-browser';
+import {HttpClientModule} from '@angular/common/http'
+import { AppRoutingModule } from './app-routing.module';
+import { AppComponent } from './app.component';
+import { EmpService } from './emp.service';
+
+@NgModule({
+  declarations: [
+    AppComponent
+  ],
+  imports: [
+    BrowserModule,
+    AppRoutingModule,
+    FormsModule,
+    ReactiveFormsModule, HttpClientModule
+  ],
+  providers: [EmpService],   
+  
+  bootstrap: [AppComponent]
+})
+export class AppModule { }
+------------------------------------------------------------------------------------------------
+
+1st  example   
+ts file
+
+export class AppComponent  {
+      public counter:number=0;
+
+      public inc():number{
+        this.counter++;
+        return this.counter;
+      }
+      public dec():number{
+        this.counter--;
+        return this.counter;
+      }
+}
+-----------------------------------------------------------------------
+html file
+
+  <button type="button" (click)="inc()">+</button>
+ <br/>
+  <button type="button" (click)="dec()">-</button>
+  <h1> {{counter}}</h1>
+
+-------------------------------------------------------------  
+spec.ts   testing file
+import { AppComponent } from "./app.component";
+
+// 1. describe - define test suite, Create a group of specs (often called a suite)
+describe('CounterComponent', ()=> {
+
+ // 2. it - define an individual unit test case
+ it ('should check incremented value is greater than zero', ()=> {
+ 
+ // dependency injection
+ let counterComponent: AppComponent = new AppComponent();
+
+ const curCounterValue = counterComponent.inc();
+
+ // 3. expect - Create an expectation/assertion for a spec
+ expect(curCounterValue).toBeGreaterThan(0);
+
+ }) 
+
+}) // describe
+
+
+----------------------------------------------------------------------------------------------
+2nd  example
+
+form.html
+
+<h2>Angular Form Validation Example</h2>
+
+<form [formGroup]="userForm" (ngSubmit)="addUser(userForm)" novalidate>
+
+  <div>
+    
+    <input type="text"  formControlName="name">
+    <div *ngIf="userForm.get('name')?.touched && userForm.get('name')?.invalid">
+      <div *ngIf="userForm.get('name')?.hasError('required')">Name is required.</div>
+      <div *ngIf="userForm.get('name')?.hasError('minlength')">Minimum 4 character are required.</div>
+    </div>
+  </div>
+
+  <button type="submit" [disabled]="userForm.invalid">Submit</button>
+</form>    
+<ul>
+
+  <li *ngFor="let user of userList" >
+     <h1>{{user.name}}</h1>
+  </li>
+  
+  
+  </ul>
+
+-------------------------------------------------------
+ts file
+
+import { Component, OnInit } from '@angular/core';
+import { FormGroup, FormBuilder, Validators } from "@angular/forms";
+
+@Component({
+  selector: 'app-root',
+  templateUrl: './app.component.html'
+})
+
+export class AppComponent  {
+  userList:any[]=[];
+  userForm:FormGroup;
+
+  constructor(public formBuilder: FormBuilder) { 
+
+
+    this.userForm = this.formBuilder.group({
+      name: ['', [Validators.required, Validators.minLength(4)]]
+         })  
+  }
+  
+
+  addUser(form:any)
+  {
+this.userList.push(form.value);
+  }
+
+}
+-----------------------------------------------------
+testing file  spec.ts
+
+import { FormBuilder } from "@angular/forms";
+import { AppComponent } from "./app.component";
+describe('LoginFormComponent', () => { 
+
+ let loginFormComponent: AppComponent;
+ let nameControl;
+
+ beforeEach(() => {
+
+ loginFormComponent = new AppComponent(new FormBuilder());
+
+ })
+
+ it('should create a form with 1 controls', () => {
+
+ expect(loginFormComponent.userForm.contains('name')).toBe(true);
+ 
+ })
+
+ it('should make the name control required', () => {
+
+  let nameControl:any = loginFormComponent.userForm.get('name');
+
+  nameControl.setValue('');
+ 
+  expect(nameControl.valid).toBeFalsy();
+ 
+  })
+})
+  -------------------------------------------------------------------------------------
+3rd  example
+service.ts
+
+Service  Example
+
+import { Inject, Injectable } from "@angular/core";
+import { Observable } from "rxjs";
+import { HttpClient } from "@angular/common/http";
+@Injectable()
+export class EmpService
+{
+     url:string="http://localhost:3000/employee";
+     constructor(private http:HttpClient)
+     {}
+        getEmps():Observable<any>
+        {
+       return  this.http.get(this.url);
+        }
+     
+}
+-----------------------------------------------
+  component ts 
+
+import { Component, OnInit } from '@angular/core';
+import { FormGroup, FormBuilder, Validators } from "@angular/forms";
+import { EmpService } from './emp.service';
+
+@Component({
+  selector: 'app-root',
+  templateUrl: './app.component.html'
+})
+
+export class AppComponent implements  OnInit {
+ emp:any[]=[];
+constructor(private  empservice:EmpService){}
+  ngOnInit(): void {
+      this.display();
+  }
+         display()
+         {
+          this.empservice.getEmps().
+          subscribe(data=>{
+            console.log(data);
+            this.emp=data;
+          })
+         }
+      }
+---------------------------------------------
+html
+
+
+<div>
+
+<table border="2">
+<thead>
+<tr>
+  <th>id</th>
+  <th>fname</th>
+  <th>lname</th>
+</tr>
+</thead>
+<tbody>
+<tr *ngFor="let  e of emp;">
+<td>{{e.id}}</td>
+<td>{{e.firstName}}</td>
+<td>{{e.lastName}}</td>
+
+
+</tr>
+
+</tbody>
+</table>
+
+</div>
+------------------------------------------
+testing file  spec.ts
+
+
+import {TestBed, async, inject} from '@angular/core/testing'
+import {HttpClientTestingModule, HttpTestingController} from '@angular/common/http/testing'
+import  {EmpService} from './emp.service';
+describe('empservice', ()=>{
+    let    empservice:EmpService;
+    let httpmock:HttpTestingController;
+    beforeEach(()=>{
+      TestBed.configureTestingModule({
+        imports:[
+          HttpClientTestingModule,
+        ],
+        providers:[EmpService],
+      });
+      empservice=TestBed.get(EmpService);
+      httpmock=TestBed.get(HttpTestingController)
+    });
+    it(`should fetch emps  as an observable`,
+    async(inject([HttpTestingController, EmpService],
+ ( httpClient:HttpTestingController, 
+  empservice:EmpService)=>{
+     const   empitems=[
+      {
+        "id": 1,
+        "firstName": "ajay",
+        "lastName": "kumar"
+      },
+      {
+        "firstName": "wasim",
+        "lastName": "gupta",
+        "id": 2
+      }
+    ];
+    empservice.getEmps().subscribe((e:any)=>{
+      expect(e.length).toBe(2);
+    });
+    let  req=httpmock.expectOne
+    ('http://localhost:3000/employee');
+    expect(req.request.method).toBe('GET');
+    req.flush(empitems);
+    httpmock.verify();
+  })));
+});
+---------------------------------------------------------------------------------------------------------------------
+
+
+

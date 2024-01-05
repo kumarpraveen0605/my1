@@ -1,0 +1,986 @@
+Collection Framework
+Date  Calendar  classses Date Formatting Number  &
+ Currency Formatting
+
+Collection?   Framework?
+
+
+Collection  is   used to  work with  group  of  different
+types(Non generic)  of Object
+
+Framework   it is a  ready made  architecture.
+It is  collection of  predefined builtin classes and
+interfaces
+
+Features of collection  framework
+u can create  a  Dynamic array  of    generic and  non generic
+elements
+u can perform   CRUD operations  on collection  elements
+u can  also perform  searching  sorting  opeartions
+on Collection framework
+u can also  traverse the   elements of Collection elements
+
+U can also store  user defind class objects  in Collection
+Like  array   collection  elements   also   works on index  basis
+  2  types  in Collection framework
+1) Collection  interface  Set  List  Queue
+2) Map  interface
+
+
+Methods  of Collection interface
+
+boolean     add(Object o)  adds   element in collection
+boolean   remove(Object o)  removes element   from collection
+boolean    addAll(Collection c) adds  elements of one collection
+to other  collection
+boolean   removeAll(Collection c)  removes the   elements  of  
+specified collection  from  invoking collection
+
+boolean   retainAll(Collection c)  removes the   elements  of  
+invoking collection  except  specified collection
+
+boolean contains(Object o)   checks  wether  element
+is there in collection or not
+
+Iterator iterator() returns the iterator of  collection
+
+int size()   returns  size of collection
+void clear()  deletes all elements of collection
+
+List  interface   
+present in java.util.* pkg
+supports  null,  duplicate , generic and  non generic  elements
+works on index basis  0 to n-1
+o/p is INSERTION order
+
+
+List  interface   methods
+
+void   add(Object o)
+void add(int  pos, Object o)
+int  indexOf(Object o)
+Object  set(int index, Object o)
+Object  remove(Object o)
+Object remove(int index)
+Object  get(int index)
+ListIterator  listIterator()
+
+
+ArrayList  class
+it impelments the List  interface
+Constructor
+ArrayList()
+ArrayList(int size)
+ArrayList(Collection c)
+
+Features
+supports  null  duplicate  generic and  non generic elements
+o/p is  insertion  order
+works on index  basis
+works  from only one end
+modification  is slow  as  schuffling of elements  required
+it is  not  synchronized
+
+
+Create a array list of  non generic elements and  display
+
+Type   Generics
+
+It is a  feature  introduced in jdk 1.5
+
+it makes  collection  TYPE SAFETY
+used to create   type  safe collections
+
+Eliminates  type  casting 
+also  detects compile time bug
+
+denoted by <>
+
+Syntax
+ArrayList<Integer> al=new ArrayList<Integer>
+creates  the ArrayLst of only integers
+if enter other type  than integer u will get compile time bug
+
+
+w.a.p to create   String ArrayList  to insert 7 strings
+and  find  4th position String
+
+Iterator
+
+it is an interface  used to  iterate the  elements  of Collection
+   Iterator interface  always  traverse  the elements in  forward
+direction
+how  to get the  Iterator  reference?
+by calling   Collection  interface iterator()  method
+
+
+Methods  of  Iterator interface
+1) boolean  hasNext()
+2)Object  next()
+3)void remove()
+
+Insert   7  double  elements  in ArrayList
+and  display using Iterator
+
+Insert   7 Strings  in ArrayList  and  remove 3rd  String
+using  Iterator's  remove()  method
+
+
+create  a  class called Student 
+with id name and city
+
+
+Object class  has  a  method  called
+
+toString()
+
+Syntax
+public   String  toString() 
+converts  Object in to string
+
+
+ADD  5 objects  in ArrayList and display
+
+
+Traversing elements  of Collection  in Reverse order
+By using ListIterator  interface
+
+methods
+boolean hasNext()
+boolean hasPrevious()
+Object next()
+Object  previous()
+
+u can get the Reference of ListIterator  by calling List's
+listIteartor() method
+
+
+
+al     ptr
+       2
+       3
+       4
+       5
+      
+
+LinkedList
+
+Constructor
+LinkedList()
+LinkedList(int size)
+LinkedList(Collection c)
+ 
+
+Features
+supports  null  duplicate  generic and  non generic elements
+o/p is  insertion  order
+works on index  basis
+works  from both end as  internally it uses  DOUBLY LINKED LIST
+modification  is FAST  as  schuffling of elements NOT required
+it is  not  synchronized
+
+
+LinkedList class  has  some  extra  methods
+
+void addFirst(Object o)
+void  addLast(Object o)
+Object  getFirst()
+Object  getLast()
+Object removeFirst()
+Object removeLast()
+Iterator   descendingIterator()
+
+Vector
+It is a  Legacy class (old)
+it is   synchronized
+supports  null  duplicate  generic and  non generic elements
+o/p is  insertion  order
+works on index  basis
+used to create  a Dynamic array
+
+Contructor
+Vector()
+Vector(int capacity)
+Vector(int capacity , int increment)
+Vector(Collection c)
+
+It implements List
+it also has  some Extra methods
+void addElement(Object o)
+Object elementAt(int index)
+Object getFirst()
+Enumeration  elements()
+gets the enumeration pointer
+int capacity()
+
+Enumeration is  an interface  used  to traverse the  elements
+of Legacy classes
+methods
+boolean hasMoreElements()
+Object nextElement()
+
+Set interface
+It extends  Collection
+it supports  unique  elements
+
+Set  interface
+SortedSet  interface  extends  Set interface
+Set  interface  is  implemented by  HashSet and LinkedhashSet 
+classes
+SortedSet  interface  is  implemented by  TreeSet class
+
+
+methods  of Set  interface
+same methods as List interface
+
+we have only one remove(Object o)
+
+HashSet
+it uses  hashing technique  to store  keys
+it supports   1  null  values
+it supports unique values
+o/p is any order
+support  generic and non generic types
+
+
+Constructor
+HashSet()
+HashSet(Collection c)
+HashSet(int size)
+
+
+LinkedHashSet
+it uses  hashing technique  to store  keys
+it supports   1  null  values
+it supports unique values
+o/p is insertion order
+support  generic and non generic types
+
+
+Constructor
+LinkedHashSet()
+LinkedHashSet(Collection c)
+LinkedHashSet(int size)
+
+
+SortedSet  interface
+it extends  Set interface
+Provides  some  extra  methods
+like
+SortedSet  headSet(Object value)
+SortedSet tailSet(Object value)
+SortedSet   subSet(Object v1, Object v2)
+As a  name  suggests  o/p is  asc  order  
+
+TreeSet class
+It implements  SortedSet interface
+it  uses  Hierarchical / tree  structure to store the  data
+Large amount of data  is  stored  
+o/p is   ascending order
+retrieval is FAST
+null  values   duplicate  values  non generic  values
+not supported
+supports  only generic  values
+
+Contstructor
+TreeSet()
+TreeSet(Collection c)
+TreeSet(int capacity)
+TreeSet(Comparator c)
+
+How  to perform  operations  on Collection elements?
+for this we have  one  class called  Collections
+present  in  util pkg
+it contains  static  methods
+
+methods  of  Collections  class
+public  static   void  sort(List l)
+public  static   void  sort(List l, Comparator c)
+public  static   int max(List l)
+public  static   int min(List l)
+public  static   int binarySearch(List l, int key)
+public  static   void reverse(List l)
+
+Enter  7 Strings  in HashSet and  sort   in ascending order
+
+
+Create class  called
+class Person
+{
+    int id;
+  String name;
+   int age;
+}
+ insert  5 objects   of Person  in  TreeSet
+and sort on age  using Comparator
+
+
+
+Comparable and  Comparator  interfaces
+Comparable  interface  present in java.lang package
+
+used  to compare the  values  of data  members  of
+class stored in Collection  
+It has  a  One  method  called
+public  int compareTo(Object o)
+
+compares    specified  obj  with  invoking obj
+if  specified obj == invoking obj returns 0
+
+if  specified obj > invoking obj returns +ve
+else
+returns  -ve
+Note  : Through  Comparable  interface  u  can do  comparison
+on ANY ONE FIELD
+
+create  a  class Called  Product with id name  quantity and 
+price  add   5 objects  in LinkedList and  sort on name
+
+class Book
+{
+   int id;
+ String name;
+    String author;
+   int price;
+}
+
+
+insert   into  TreeSet  and sort  on author
+
+
+Comparator  interface  present in java.util package
+
+used  to compare the  values  of data  members  of
+class stored in Collection  
+It has  a  One  method  called
+public  int compare(Object o1, object o2)
+
+compares      obj1  with   obj2
+if  obj1 == obj2 returns 0
+
+if  obj1 > obj2 returns +ve
+else
+returns  -ve
+Note  : Through  Comparator interface  u  can do  comparison
+on MORE  THAN  ONE FIELD
+
+
+class   Customer
+{
+    int id;
+String name;
+ String  city;
+}
+insert   5 Objects  of Customer in  HashSet and  sort on  city and
+id
+
+Map   interface
+
+used  to store  data  in key  value pair  form
+Left side  keys  appear  right side  value  appears
+
+key must be unique
+value  can be duplicated
+
+methods of Map  interface
+
+Object   put(Object  key, Object value)
+Map   putAll(Map m)
+boolean containsKey(Object key)
+boolean containsValue(Object value)
+Set   entrySet()
+Set  keySet()
+Collection values()
+Object  get(Object key)
+
+HashMap  class
+Constructor
+HashMap()
+HashMap(int size)
+HashMap(Map m)
+
+features
+uses  hashing  technique  to store  keys
+support   1 null  key  multiple null values
+keys  and values  both can be generic and  non generic
+key must  unique  value can be duplicated
+o/p  is any order on key basis
+
+
+
+create  a  Class   Emp
+with   name and  des
+create  a  Class   Department
+with   dname and  dlocation
+
+create  4 objects of each calss
+
+and store it in HashMap key as  Emp values  Department
+
+
+o/p  must be
+ 
+hasha  an engineer   working in IT  department  at goa  city
+
+
+LinkedHashMap  class
+Constructor
+LinkedHashMap()
+LinkedHashMap(int size)
+LinkedHashMap(Map m)
+
+features
+uses  hashing  technique  to store  keys
+support   1 null  key  multiple null values
+keys  and values  both can be generic and  non generic
+key must  unique  value can be duplicated
+o/p  is INSERTION  order on key basis
+
+
+
+TreeMap
+it  implements  Sortedmap   interface
+SortedMap  interface  extends  Map  interface
+
+it  has   same methods  as Map interface
+along with that  it has  some extra methods
+
+SortedMap  headMap(Object key)
+SortedMap  tailMap(Object key)
+SortedMap  subMap(Object key1, Object key2)
+
+Features
+uses  tree structure  to store keys
+used to store  large amount of data
+as  key is stored in heirachical  structure
+support  NO null  key  multiple null values
+keys MUST  be generic and values  both can be generic and
+  non generic
+key must  unique  value can be duplicated
+o/p  is ascending  order on key basis
+makes  fast  retrieval
+
+
+Constructor
+TreeMap()
+TreeMap(Map m)
+Treemap(int size)
+TreeMap(Comparator c)
+
+
+File  Handling io  package
+  in  java  2  kinds  of data  are available
+1) byte  data  handled by Stream
+2)  character  data   handled by   Readers and Writers
+
+
+
+2 types  of Streams
+InputStream 
+used to read from a  file
+methods
+void close() throws  IOException
+int  read()  throws  IOException
+int skip(int bytes) throws IOException
+int available() throws IOException
+
+  OutputStream
+used to write  in file
+void    flush()   throws   IOException
+void write(byte[] b)  throws IOException
+void close()  throws  IOException
+
+
+FileInputStream
+BufferedInputStream
+SequenceInputStream
+PipedInputStream
+ByteArrayInputStream
+ObjectInputStream
+
+FileOutputStream
+BufferedOutputStream
+PipedOutputStream
+ByteArrayOutputStream
+PrintStream
+ObjectOutputStream
+
+File it is  a class
+used to create a  File
+Constructors
+File()
+File(String filename)
+
+methods
+boolean  createNewFile() throws IOException
+boolean idDirectory()
+boolean isFile()
+long getFreeSpace()
+String getAbsolutePath()
+String getCanonicalPath()
+
+
+
+
+How to write  data  in file
+Use  FileOutputStream class
+Constructor
+
+FileOutputStream(String filename)
+FileOutputStream(String fname, boolean append)
+
+
+
+Serialization
+writing  a   state of an  object  in to   byte   stream is called
+
+serialization. Used  for  security   purpose
+used in  networking  application
+
+We use  ObjectOutputStream  class   for  this
+we ahieve  it using writeObject(Object  o) method
+
+Rules
+u cannot serialize static  transient data  members
+if  u serialize the  array  if any  one object  in array
+is not serialized then serialization fails
+ur class must  implement  MARKER interface  called
+Serilalizable
+if  super class implements  Serializable interface  for
+serialization then sub class extends super class
+no need to implement  Serializable  interface
+for   sub class
+
+
+create a class called
+class Product
+{
+   int id;
+String name;
+   int price;
+}
+insert one Object and  Serialize it
+and  Serialize it
+
+DeSerialization
+reading  a serialized   object   from  serialized state
+to   original state  is called DeSerialization
+
+
+We use  ObjectInputStream  class   for  this
+we ahieve  it using readObject() method
+
+syntax
+Object readObject()
+
+
+enum
+
+it is  a data type  contains    constants like
+days  of a week months of a calenders  seasons of a  year
+u can declare  enum in class also / out side class also
+it  can also  contians   methods   constructors  data  members
+main method e.t.c  introduced in  1.5
+u can also traverse   enum  elements  through  for  each loop
+through  values()  method
+values() method available  in built in when u create enum
+this  method returns   an array  of  enum  constants
+u can  also  use enum as switch case
+
+syntax
+public  enum   days{mon, tue, wed, thur, fri, sat, sun};
+
+internally  enaum values are  public static  final  constant
+
+u can  implement  many interface  through enum
+but  enum cannot extend any class as internally
+enum extends enum class
+
+
+
+Java  1.8   features
+Functional  Interfaces
+Lamda  expressions
+Stream API  and methods  of Stream API
+Method References
+StringJoiner  class
+Parallel sort
+Date  & time  API
+
+
+Functional Interfaces   contains  only   1 abstract method
+it  also  contains  default concrete  methods
+and   constants.
+It is  created by using annotation called
+@FunctionalInterface
+there  43+   Functional interfaces are  present
+Eg  Predicate Consumer  Supplier  BinaryOperatory
+UnaryOperator Function Runnable  Comparator
+
+
+
+Lamda  expression
+is  used  to   invoke  the  method
+with out specifying the   name
+used to show the  implementations  of
+functional  interface  method
+if  it is   normal interface  then   that  interface
+methods  cannot be imeplemented  by lamda  expressions
+
+Syntax
+it is  denoted by ->   symbol
+left side  we have  parameters
+in parenthesis
+right side  we have a body which contains
+print statements  buss.logic and   declaration
+implementations  of a method
+
+Ex:
+()->
+{
+return "Hello  world" 
+}
+it is   similiar  to   
+
+public  String   say()
+{
+     return "hello world";
+}
+
+
+
+public void  cal(int a, int b)
+{
+     System.out.println(a+b);
+}
+(x,y)->{
+    System.out.println(x+y);
+}
+
+create a  Class called Person
+class Person
+{
+  int id;
+String name;
+   int age;
+}
+
+insert  5 objects  in ArrayList of  Person class
+Using Comparator interface sort on names using   Lamda expression
+
+Stream  API
+It is  present in java.util.stream.* pkg
+4  important   core  functional  interfaces  are
+Supplier    get()
+Consumer   accept()
+Predicate    test()
+Function  apply()
+
+
+Supplier
+
+it is  a functional  interface   takes  no  Argument
+and returns  type
+Syntax
+@FunctionalInterface
+public interface Supplier<T>
+{
+  T get();
+}
+Eg   ()->{
+     return "Hi";
+}
+     ()->{
+     return 20;
+}
+
+Consumer
+it is  a functional  interface   takes  1  Argument
+and returns nothing
+Syntax
+@FunctionalInterface
+public interface Consumer<T>
+{
+  void  accept(T t);
+}
+Eg   (s)->
+{
+   System.out.println(s);
+}
+
+    (a)->
+{
+   System.out.println(a*a*a);
+}  
+ 
+Prdicate  It is a  functional   interface  takes
+1 argument return   boolean
+Syntax
+@FunctionalInterface
+public  interface   Predicate<T>{
+   boolean  test(T t);
+}
+Eg
+(String s)->{
+    return s.length()>0;
+}
+(int s)->{
+    return s>0;
+}
+
+Function is a  Functional interface accept   one type of argument
+and returns  another  type  of Object
+@FunctionalInterface
+public  interface   Function<T, R>
+{
+    R apply(T  t);
+}
+(String s)->{
+    return  s.length();
+}
+
+Optional
+
+It is   final  class
+used  to handle   null pointer exception
+present in  java.util pkg
+
+methods
+ static Optional<T>   empty();
+  static   Optinal<T> of(T t)
+  static   Optional<T>  ofNullable(T t)
+   if   object is null returns  null
+    T get()  returns  Object
+    Optional map(Function  f)    
+   performs the   operations  on Optional  element
+   Optional  filter(Prdicate  f)
+   checks  for  conditions and   returns  optional
+   void  ifPresent(Consumer c) wether the object is
+present or not
+  boolean ispresent()
+  T orElseThrow(Supplier s)
+
+
+Collectors  class
+
+It is also  a  Final class
+present in  util package
+Used hold the  results  of Stream  API
+
+
+methods
+
+List toList()
+Set   toSet()
+Map  toMap()
+T summingAverage(Function f)
+T summingDouble(Function f)
+T summingInt(Function f)
+
+Stream  API
+it is  present  in java.util.stream.*
+it  is   not a  data  structure
+it acts like a pipe line
+it is lazy
+it is   unbounded
+designed for  lamdas
+parallel  order
+no index   basis
+
+
+method
+terminal operations  returns  other  type
+collect()  min()  max()   reduce()
+allMatch() noneMatch()   findAny()  findFirst()
+forEach()   count()
+intermmediae operations  
+returns  Stream
+skip()    filter()  limit()   map()
+sorted()   iterate() generate()  of()
+distinct()
+
+
+static  Stream<T>  of(T t)
+void forEach(Consumer c)
+Stream  filter(Predicate c)
+boolean   allMatch(Predicate p)
+boolean   anyMatch(Predicate p)
+boolean   noneMatch(Predicate  p)
+Optional  max(Comparator  c)
+Optional min(Comparator c)
+Optional  reduce(BinaryOperator  b)
+Optional findFirst()
+Optional findAny()
+Stream map(Function f)
+Stream sorted()
+Stream skip(long l)
+Stream limit(long l)
+Stream distinct()
+static Stream generate(Supplier s)
+static Stream iterate(int seed, UnaryOperator)
+T collect(Collectors c)
+long count()
+Enter  10  integers  in ArrayList and  sort   in ascending order
+Enter  10 names  in Array List  display first  5  names
+which starts with letter 'v' and   convert into 
+uppercase letters
+
+class  Product
+{
+   int id;
+String name;
+  int price;
+}
+  insert  5 Objects  of Product  in ArrayList 
+and  display  the  prices  of those  products   which is > than 10000
+
+enter   10 integers  in ArrayList and  find  max  and  min
+using Stream  API
+
+
+enter   10 integers  in ArrayList and  find   sum of all
+integers  using
+1) collectors  method
+2)  using reduce  method
+
+Binary operator is a   Functional  interface
+takes  2 parameters  of  same  type  and  returns  same  type
+as a result
+Unnaryoperator is a   Functional  interface
+takes  1 parameters   and  returns  same  type
+as a result
+
+Enter  7 names  in  ArrayList and  check all names
+starts   with  letter  "a"
+ 
+
+Method  references  
+
+Short  cut way of  lamda   expressions
+
+shows the  impelmentations  for  methods of  functional interface
+
+Syntax  ::
+
+2 types
+
+ static  method references  used  to refer  static methods
+  instance  method  references
+  used to refer   a  non static  method
+
+
+Date   & Time API
+
+LocalDate class
+used  display  date/format the date  and  parse the  date
+Present  in java.time.* pkg
+methods
+static   LocalDate  now()   displays  todays date
+String format(DateTimeFormater s)   converts
+date  to String
+static   LocalDate  of(int year , int month, int day)
+creates the date
+static LocalDate parse(String date)
+converts String to date
+LocalDate  minusDay(int d)
+LocalDate  plusDay(int d)
+LocalDateTime  atTime(int h, int m, int se)
+returns  localdatetime
+
+
+LocalTime  class
+Used  to display   time
+
+methods
+static  LocalTime  now()
+displays  current  time
+static   LocalTime  of(int hours, int mins, int sec)
+creates  own time
+LocalTime  plusHours(int  h)
+LocalTime  minusHours(int h)
+
+
+parallel sorting  
+it is  a new  method  in Arrays   class
+it sorts  elements also it  sort  elements w.r.t. index
+
+static  void parallelSort(T[] t)
+static void  parallelSort(T[] t, int startindex, int endindex)
+
+
+StringJoiner  class
+creates   Strings  with  charsquence
+which are deimeters
+
+Constructor
+StringJoiner(Charsequence  deimeters)
+methods
+
+StringJoiner add(String s)
+StringJouner  setEmptyValue(String s)
+StringJoiner merge(StringJoiner s)
+int length()
+
+
+
+
+Funadamentals  of  DBMS
+It is  a  s/w  used to  manage  the data
+used to perform  CRUD  operations  on database
+we have  many  database s/w  are availabe  in market
+DB2 POSTGRE MYSQL ORACLE
+
+advantages
+3 schema  architecture
+Models of  DBMS
+Introduction to   RDBMS
+keys
+1st 2nd and 3rd  Normal forms
+ER diagrams
+MYSQL 8  installation
+mysql    sql  development
+
+
+
+3   LEVEL  SCHEMA
+
+1)  PHYSICAL  / internal   schema
+involves   how the    data   is  reprented  internally
+in memory   like   byte  format/ char  format
+2)  conceptual/logical schema
+involves  what    type  of data   is  represented
+logically  It involves  column name/ attribute name
+length   data  type   width  e.t.c
+3)   external/view   schema
+involves  what  actual data   is  used  by user
+it can have  more than 1 
+but   we have  only 1 physical/logical schema
+
+
+Models  of  DBMS
+1) Hierarchical  model
+
+in this   data  is  stored  in   tree structure
+supports  1 to M relationship
+
+2) n/w  model
+
+in this   data  is  stored  in  node structure
+it supports  1 to 1 1:m m:m
+
+3)  Relational  model
+it stores the data  in tables in rows  and  columns
+Dveloped by  Mr CODD
+IN 1970
+
+Relation  means  table
+each value in a cell is called  field
+entire  horizontal   line  is called  row/tuple
+entire  vertical   line  is called column/tu
+
+CODD   12 rules
+
+
+
+
+3) Relational  model

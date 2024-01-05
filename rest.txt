@@ -1,0 +1,534 @@
+karma
+https://github.com/dinanathsj29/
+angular-unit-testing-jasmine-karma-tutorial
+
+
+
+
+
+
+
+
+
+
+
+programmatic  java autowire
+https://www.onlinetutorialspoint.com/spring/spring-java-configuration-example.html
+
+For  Hibernate  6
+Following are the Depenedencies
+<dependency>
+	<groupId>org.hibernate.orm</groupId>
+	<artifactId>hibernate-core</artifactId>
+	<version>6.1.6.Final</version>
+</dependency>
+<dependency>
+	<groupId>org.glassfish.jaxb</groupId>
+	<artifactId>jaxb-runtime</artifactId>
+	<version>3.0.0</version>
+</dependency>
+
+<dependency>
+    <groupId>com.oracle.ojdbc</groupId>
+    <artifactId>ojdbc8</artifactId>
+    <version>19.3.0.0</version>
+</dependency>
+
+
+post  construct  pre destroy
+
+		<dependency>
+	<groupId>jakarta.platform</groupId>
+	<artifactId>jakarta.jakartaee-api</artifactId>
+	<version>9.0.0-RC2</version>
+</dependency>
+<!-- Thanks for using https://jar-download.com -->
+
+
+
+
+
+https://repo.spring.io/ui/native/release/org/springframework/spring/
+
+spring value jdbctemplate  datasource  eg
+
+
+jdbc.driver=com.mysql.cj.jdbc.Driver
+jdbc.url=jdbc:mysql://localhost:3306/iprimed
+jdbc.username=root
+jdbc.password=123456
+
+
+import org.springframework.jdbc.core.JdbcTemplate;
+import org.springframework.stereotype.Repository;
+
+
+public class EmpDao {
+    private JdbcTemplate   jdbcTemplate;
+
+	public void setJdbcTemplate(JdbcTemplate jdbcTemplate) {
+		this.jdbcTemplate = jdbcTemplate;
+	}
+    public   int save(Emp  e)
+    {
+    	   return  jdbcTemplate.update("insert into emp11 values(?,?,?)",
+    			   e.getId(), e.getName(),e.getCity());
+    }
+}
+
+
+
+public class Emp {
+    int id;
+    String name;
+    String city;
+	public Emp(int id, String name, String city) {
+		super();
+		this.id = id;
+		this.name = name;
+		this.city = city;
+	}
+	public Emp() {
+		super();
+	}
+	public int getId() {
+		return id;
+	}
+	public void setId(int id) {
+		this.id = id;
+	}
+	public String getName() {
+		return name;
+	}
+	public void setName(String name) {
+		this.name = name;
+	}
+	public String getCity() {
+		return city;
+	}
+	public void setCity(String city) {
+		this.city = city;
+	}
+	@Override
+	public String toString() {
+		return "Emp [id=" + id + ", name=" + name + ", city=" + city + "]";
+	}
+    
+}
+
+
+
+import org.springframework.context.annotation.AnnotationConfigApplicationContext;
+import org.springframework.context.annotation.ComponentScan;
+
+public class Main {
+public static void main(String[] args) {
+	AnnotationConfigApplicationContext  a=
+			new AnnotationConfigApplicationContext(Config.class);
+	  EmpDao   e=a.getBean(EmpDao.class);
+	  System.out.println(e.save(new Emp(4, "raju" ,"jammu"))+"   row inserted!");
+	 
+	
+}
+}
+
+
+import javax.sql.DataSource;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.ComponentScan;
+import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.PropertySource;
+import org.springframework.jdbc.core.JdbcTemplate;
+import org.springframework.jdbc.datasource.DriverManagerDataSource;
+@Configuration
+@PropertySource("classpath:db.properties")
+public class Config {
+
+   @Value("${jdbc.driver}")
+   private String jdbcDriver;
+
+   @Value("${jdbc.url}")
+   private String jdbcUrl;
+
+   @Value("${jdbc.username}")
+   private String username;
+
+   @Value("${jdbc.password}")
+   private String password;
+
+   @Bean
+   public DataSource  dataSource() {
+      DriverManagerDataSource dataSource = new DriverManagerDataSource();
+      dataSource.setDriverClassName(jdbcDriver);
+      dataSource.setUrl(jdbcUrl);
+      dataSource.setUsername(username);
+      dataSource.setPassword(password);
+      return dataSource;
+   }
+      @Bean
+      public   JdbcTemplate   jdbcTemplate()
+      {
+    	          JdbcTemplate  jdbcTemplate=new JdbcTemplate();
+    	           jdbcTemplate.setDataSource(dataSource());
+    	           return   jdbcTemplate;
+      }
+      
+		
+		  @Bean public EmpDao empDao() { EmpDao empDao=new EmpDao();
+		  empDao.setJdbcTemplate(jdbcTemplate()); return empDao; }
+		 
+      }
+
+
+https://howtodoinjava.com/spring-rest/spring-rest-crud-jpa-example/
+
+
+
+
+<dependency>
+    <groupId>com.sun.xml.bind</groupId>
+    <artifactId>jaxb-core</artifactId>
+    <version>2.3.0.1</version>
+</dependency>
+ 
+<dependency>
+    <groupId>javax.xml.bind</groupId>
+    <artifactId>jaxb-api</artifactId>
+    <version>2.3.1</version>
+</dependency>
+ 
+<dependency>
+    <groupId>com.sun.xml.bind</groupId>
+    <artifactId>jaxb-impl</artifactId>
+    <version>2.3.1</version>
+</dependency>
+  
+<dependency>
+    <groupId>org.javassist</groupId>
+    <artifactId>javassist</artifactId>
+    <version>3.25.0-GA</version>
+</dependency>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+http://javainsimpleway.com/jax-ws-basic-example-rpc-style/
+What is Build Lifecycle?
+A Build Lifecycle is a well-defined sequence of phases, which define the order in which the goals are to be executed. Here phase represents a stage in life cycle. As an example, a typical Maven Build Lifecycle consists of the following sequence of phases.
+
+Phase	Handles	Description
+prepare-resource
+s	resource copying	Resource copying can be customized in this phase.
+validate	Validating the information	Validates if the project is correct and if all necessary information is available.
+compile	compilation	Source code compilation is done in this phase.
+Test	Testing	Tests the compiled source code suitable for testing framework.
+package	packaging	This phase creates the JAR/WAR package as mentioned in the packaging in POM.xml.
+install	installation	This phase installs the package in local/remote maven repository.
+Deploy	Deploying	Copies the final package to the remote repository.
+
+What are Maven Plugins?
+Maven is actually a plugin execution framework where every task is actually done by plugins. Maven Plugins are generally used to −
+
+create jar file
+create war file
+compile code files
+unit testing of code
+create project documentation
+create project reports
+A plugin generally provides a set of goals, which can be executed using the following syntax −
+
+mvn [plugin-name]:[goal-name]
+For example, a Java project can be compiled with the maven-compiler-plugin's compile-goal by running the following command.
+
+mvn compiler:compile
+Sr.No.	Plugin & Description
+1	
+clean
+
+Cleans up target after the build. Deletes the target directory.
+
+2	
+compiler
+
+Compiles Java source files.
+
+3	
+surefire
+
+Runs the JUnit unit tests. Creates test reports.
+
+4	
+jar
+
+Builds a JAR file from the current project.
+
+5	
+war
+
+Builds a WAR file from the current project.
+
+6	
+javadoc
+
+Generates Javadoc for the project.
+
+
+
+scopes
+
+compile
+runtime
+system
+provided
+test
+
+
+
+
+
+Spring Rest  Module
+REST  means  Representation state  Transffer
+It is an  architechtural   style
+it uses  client server  architecture
+in this  style  client  send the  request  to server
+on  internet
+server  process the  request
+It uses HTTP protocol 
+so every  request from client is new request
+REST  supports  many data types
+xml/json/ascii/text/plain/image/excel  e.t.c
+Rest  requests  CACHEABLE
+Rest   uses  many  methods
+GET POST  PUT HEAD DELETE  OPTIONS
+It  uses   url/uri as  a resource
+If the url/uri changes  according to that  user gets the 
+resource
+it uses  default data  type  for  Object as  json
+data type
+Spring REST  module  in Spring boot is  available
+through
+spring-boot-starter-web depenedncy
+it auto configures th Jackson  to Json message  converts
+i.e  it  includes the jar files
+like jackson-databind jackson-annotation
+jackson-core 
+Spring REST annotation 
+like SpringMVC  Spring REST also  have  foll annotations
+@RestController
+it is  class level  annotation
+present in org.springframework.web.bind.annotation.* pkg
+@RestController=@Controller+@ResponseBody
+when u annotated  this  annotation to a class
+means  it is  rest application and u will see o/p
+in message  format (json/xml)
+@ResponseBody
+it is  method level
+used to return the response proccessed  from put get delete  post
+methods
+It is optional  if u used  @RestController
+@RequestBody
+used  to  specify the  the Parameter  for the Request  in the
+body  used in POST method
+it is  field level annottaion
+@PathVariable
+it is  field level annotation
+used inject  values to  URL parameters  Dynamically
+@GetMapping @PutMapping @PostMapping @DeleteMapping
+these are  equivalent of using @RequestMapping annotation
+with  attribute  method=get/put/post/delete
+respectively
+These are  method level annotations  avaiable from 
+spring 4 onwards
+@ResponseStatus
+it is  class level annotation
+used to specify the Status of the Response
+Classes
+ResponseEntity
+it is present in 
+org.springframework.http.* pkg
+used to  hold the  response 
+after  REST  request is processed
+methods
+String getBody()
+returns  body of the Response
+HttpStatus
+provides  status  of HttpResponse
+HttpStatus.OK
+HttpStatus.CREATED
+
+
+Popular  HttpStatus codes
+500  inetrnal server error
+200  success
+404  not found
+201  resource created
+
+Install REST API testing tool  POST MAN Vesion 8
+
+
+Create  a Class called  Product  with id, name and
+price and CREATE CRUD  application using   REST
+
+
+create a Class called  Employee  with  id, name  age and City
+Develop the  Spring Boot  Rest  Application  to insert
+into Database  using  JPA Also  apply  vaidation and
+Exception  Handling Features
+
+
+
+RestTemplate
+It is present  in   org.springframework.web.client.RestTemplate
+pacckage
+Used  to consume  the 
+Rest Services
+RestTemplate is a Central class within the Spring Framework
+
+for Executing the Synchronous  Http Requests
+on client side
+
+Features  of RestTemplate
+creating  URL object
+and opening the connection
+Configuring Http Requests
+Executing Http Requests
+Interpretation of Http response
+Converting   the http  response  into java 
+object
+Exception handling
+
+Methods
+T getForObject(String url, Class c)
+returns the Resource  Directly
+ResponseEntity<T> exchange(String url, HttpMethod type,
+HttpHeaders  h, Class c)
+Returns  Response entity that  contains  both the HttpStatus Code
+and Resource
+T  getForEntity(String url, Class c, Map  parameters)
+Exceutes the GET request  and  Returns response entity  that
+contains both the status code and resourse
+T  postForObject(String url,  Object o,  Class c)
+Processes  POST request  and returns/ saves  resource
+T postForEntity(String url,  Object o,  Class c)
+Process  POST request
+Returns response entity  that
+contains both the status code and resourse
+void delete(String url, Map  parameters)
+process the  Delete  request
+void put(string url,Object o, Map parameters)
+update  resources
+
+
+
+package praveen;
+import java.util.*;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
+import org.springframework.web.client.RestTemplate;
+@Component
+public class EmployeeConsumer {
+	@Autowired
+	private  RestTemplate  restTemplate;
+public  void  getEmployee()
+{
+	System.out.println("Getting all employees");
+	Employee[] e=restTemplate.getForObject
+("http://localhost:9090/api/v1/employees",
+			Employee[].class);
+	for(Employee ee:e)
+	{
+		System.out.println(ee);
+	}
+	System.out.println(".........................................");
+}
+public   void  getEmpById()
+{
+	System.out.println("Employee w.r.t. ID");
+	Map<String, Integer>  params=new HashMap<String, Integer>();
+	params.put("id",10);
+	Employee  e=restTemplate.getForObject
+			("http://localhost:9090/api/v1/employees/{id}",
+ Employee.class, params);
+	System.out.println(e);
+	System.out.println("........................................");
+}
+public  void create()
+{
+	System.out.println("Creating...............");
+	Employee  e=new Employee("xxxxx","yyyyyy");
+	Employee  r=restTemplate.postForObject
+("http://localhost:9090/api/v1/employees",
+			e, Employee.class);
+	System.out.println(r);
+	System.out.println("..........................");
+}
+public  void update()
+{
+	System.out.println("Updating........................");
+	Map<String, Integer>  params=new HashMap<String, Integer>();
+	params.put("id",7);
+	Employee e5=new Employee("updatename", "updatecity");
+	restTemplate.put("http://localhost:9090/api/v1/employees/{id}",
+e5, params);
+	System.out.println("Updated.....................");
+}
+public  void delete()
+{
+	System.out.println("deleting........................");
+	Map<String, Integer>  params=new HashMap<String, Integer>();
+	params.put("id",8);
+	restTemplate.delete
+("http://localhost:9090/api/v1/employees/{id}
+" ,params);
+	System.out.println("deleted...");
+}
+}
+
+
+package praveen;
+
+import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.annotation.Bean;
+import org.springframework.web.client.RestTemplate;
+
+@SpringBootApplication
+public class ConsumerApplication {
+
+	public static void main(String[] args) {
+		ApplicationContext  ac=
+		SpringApplication.run(ConsumerApplication.class, args);
+		EmployeeConsumer c=ac.getBean(EmployeeConsumer.class);
+		c.getEmployee();
+		c.getEmpById();
+		c.create();
+		c.update();
+		c.delete();
+	}
+	/*
+	 * @Bean ConsumerController consumerController() { return new
+	 * ConsumerController(); }
+	 */
+	@Bean
+	public RestTemplate  restTemplate()
+	{
+		return new RestTemplate();
+	}
+}
+
+	
+
+

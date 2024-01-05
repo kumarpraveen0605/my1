@@ -1,0 +1,140 @@
+npm    intstall   -g  create-react-app     
+
+npm create-react-app    projectname
+
+
+
+npx  create-react-app projectname
+22nd presentation
+
+abhinesh    react  project  structure  &  execution & installation 
+anushree   react   different type  of components
+baljeet singh   react  refs
+Esohin          react  events
+Gokul           react  form   validation
+Hanumanth        react   controlled forms
+Immanual         react   uncontrolled  forms
+Litheesh          react  lists 
+Nishita          react  material
+Nitin             react  hooks
+pooja             react routing
+siddesh          react  conditional   rendering
+chehak            react  states and props
+
+
+function component   does not have states
+nor they have  constructors
+
+setState({name:"Ravi", age"2"})
+clik={setState}
+
+but   using hooks  in function component makes  function component
+statefull
+to create    function component use   function keyword
+and write   view  logic   return statement
+It  does not have  render method
+
+
+JSX
+
+Java script xml
+
+used to write  html in react
+don't use   capital  letter tags  for html
+u  MUST HAVE a single parent  tag
+
+babel  is a transpiler  transpiles  the
+JSX into  js (ES5)   
+
+
+
+
+
+states
+
+represents  the  attributes  of the  Object
+
+these are  avaialble  only  to class  components
+u can change the state  of the  component using
+setState() method
+class   components  are also called  statefull  components
+
+
+constructor   in class compoenents
+
+we can also  declare / initialize state  in   constructor
+in construcor  always   decalre   state  using this  keyword
+below  we have  super()
+which calls the  Super class  React.Components  constructor
+
+props
+defines the  properties  of the   component
+we can pass  props in   function component also
+and  in class  component also
+In  class component  we pass  props  keyword
+in  constructor() and super
+
+Syntax
+class   MyComponent extends ReactComponent
+{
+    constructor(props)
+ {
+    super(props);
+    states
+}
+}
+while   accessing props  in class  components  u use   
+this.props.propertynameofcomponent
+
+Eg   Car  is  a component
+ <Car   brand="hyundai"/>
+  here  brand is  props
+u can access    brand  in Car  using  this.props.brand
+
+
+acccessing props   in  function   components
+
+   function   Fun(props)
+{
+    return (<h1>{props.propertyname}</h1>);
+  }
+   since   function components  don't have any states
+
+   don't  access  props  using  this   key word
+
+
+If  any  component   does  not have property then   u can acces
+through  defaultProps
+
+Syntax
+Componentname.defaultProps={}
+
+
+
+using   props  and  states   together
+
+
+React  EVENTS
+
+
+events are  nothing but change in state of the Component
+in  java  scripts   events are  fired by
+
+function   add()
+{}
+<button onclick="add()">click</button>
+
+But in React   Events are  fired   by
+<button   onClick={add}></button>
+
+
+if the   events  of  functions are  ARROW   functions  then
+u can directly call
+else
+u need to bind() with  this  key word in constructor
+
+I can change the  state  by using   setState method
+
+
+
+
